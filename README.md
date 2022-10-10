@@ -1,0 +1,56 @@
+typescirpt 实现base64 encode decode 
+支持换行分隔，过滤非法字符
+
+``` typescript
+
+
+import {base64js } from "./base64"
+var buff = new TextEncoder().encode("Hello world 你好，世界 abc");
+/// encode to base64 strng
+var result = base64js.encode(buff)
+console.log(result)
+
+/// decode to UInt8Array
+var decodeBf = base64js.decode(result)
+var decodeStr = new TextDecoder().decode(decodeBf)
+
+console.log(decodeStr);
+
+console.log('\n\n----------\n')
+
+
+var str = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
+/// line break
+buff = new TextEncoder().encode(str)
+var result = base64js.encode(buff,76)
+console.log("encode\n",result)
+
+/// decode to UInt8Array
+var decodeBf = base64js.decode(result)
+var decodeStr = new TextDecoder().decode(decodeBf)
+
+
+console.log("\n\n decode:",decodeStr)
+
+
+```
+
+output
+```
+
+SGVsbG8gd29ybGQg5L2g5aW977yM5LiW55WMIGFiYw==
+Hello world 你好，世界 abc
+
+
+----------
+
+encode
+ MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3
+ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0
+NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAx
+MjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4
+OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MA==
+
+
+ decode: 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
