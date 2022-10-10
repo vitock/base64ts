@@ -1,0 +1,16 @@
+{
+  "name": "base64ts",
+  "version": "1.0.0",
+  "description": "base64 encode decode in typescript, linebreak mode support  ",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^18.8.3",
+    "terser": "^5.15.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"tsc &&  node_modules/terser/bin/terser dist/base64.js -m -c  -o dist/base64.min.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
